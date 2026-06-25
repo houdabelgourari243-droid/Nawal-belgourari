@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nawal Belgourari — Developer · Teacher · Writer · Activist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#08080E;--surface:#0F0F18;--card:#13131E;--border:#1E1E2E;--accent:#C084FC;--accent2:#38BDF8;--accent3:#F472B6;--text:#E2E2F0;--muted:#6B6B90;--white:#FFFFFF;--green:#4ADE80;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',sans-serif;--mono:'Space Mono',monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 5vw;background:rgba(8,8,14,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--white)}.nav-logo em{color:var(--accent);font-style:italic}
+.nav-links{display:flex;gap:1.4rem;list-style:none}.nav-links a{color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;transition:color .2s}.nav-links a:hover{color:var(--accent)}
+.nav-roles{display:flex;gap:.4rem}.rp{font-size:.68rem;padding:.18rem .55rem;border-radius:100px;font-family:var(--mono);border:1px solid}.rp-tech{color:var(--accent2);border-color:rgba(56,189,248,.3);background:rgba(56,189,248,.06)}.rp-edu{color:var(--accent);border-color:rgba(192,132,252,.3);background:rgba(192,132,252,.06)}.rp-write{color:var(--accent3);border-color:rgba(244,114,182,.3);background:rgba(244,114,182,.06)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:9rem 5vw 5rem;position:relative;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0}
+.b1{width:500px;height:500px;background:radial-gradient(circle,rgba(192,132,252,.15),transparent 70%);top:-80px;right:-80px;animation:fb 9s ease-in-out infinite}
+.b2{width:350px;height:350px;background:radial-gradient(circle,rgba(56,189,248,.1),transparent 70%);bottom:60px;left:-60px;animation:fb 12s ease-in-out infinite reverse}
+.b3{width:250px;height:250px;background:radial-gradient(circle,rgba(244,114,182,.1),transparent 70%);top:50%;left:40%;animation:fb 7s ease-in-out infinite 2s}
+@keyframes fb{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(20px,-20px) scale(1.05)}66%{transform:translate(-15px,15px) scale(.97)}}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-bottom:1.5rem;letter-spacing:.08em}.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--accent);display:block}
+.hero h1{font-family:var(--serif);font-size:clamp(3rem,8vw,7rem);font-weight:900;line-height:1.0;color:var(--white);letter-spacing:-.03em;margin-bottom:.4rem}
+.hero h1 .n1{display:block}.hero h1 .n2{display:block;font-style:italic;background:linear-gradient(120deg,var(--accent),var(--accent2) 60%,var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200%;animation:sh 5s linear infinite}
+@keyframes sh{0%{background-position:0% center}100%{background-position:200% center}}
+.hero-tag{font-size:clamp(.9rem,2vw,1.2rem);color:var(--muted);max-width:560px;margin:1.5rem 0 2.5rem;font-weight:300;line-height:1.8}.hero-tag strong{color:var(--text);font-weight:500}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.72rem 1.7rem;border-radius:8px;font-size:.88rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all .25s;font-family:var(--sans);border:2px solid transparent}
+.btn-primary{background:var(--accent);color:#0A0010;border-color:var(--accent)}.btn-primary:hover{background:transparent;color:var(--accent)}
+.btn-teal{background:var(--accent2);color:#001822;border-color:var(--accent2)}.btn-teal:hover{background:transparent;color:var(--accent2)}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--border)}.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;flex-wrap:wrap}
+.stat-num{font-family:var(--mono);font-size:2rem;font-weight:700;color:var(--white);display:block;letter-spacing:-.04em}.stat-label{font-size:.78rem;color:var(--muted)}
+section{padding:5.5rem 5vw;position:relative}
+.sec-label{font-family:var(--mono);font-size:.7rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}.sec-label::after{content:'';width:36px;height:1px;background:var(--accent);opacity:.5}
+.sec-title{font-family:var(--serif);font-size:clamp(1.7rem,3.5vw,2.8rem);font-weight:900;color:var(--white);line-height:1.15;letter-spacing:-.02em;margin-bottom:.6rem}
+.sec-desc{color:var(--muted);max-width:500px;margin-bottom:2.5rem;font-size:.95rem}
+#about{background:var(--surface)}
+.about-grid{display:grid;grid-template-columns:300px 1fr;gap:4rem;align-items:start}
+.about-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:1.8rem;text-align:center;position:sticky;top:5.5rem}
+.avatar-ring{width:110px;height:110px;margin:0 auto 1rem;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2),var(--accent3));padding:3px;display:flex;align-items:center;justify-content:center}
+.avatar-inner{width:100%;height:100%;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:2.8rem}
+.about-name{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:.2rem}
+.about-loc{font-size:.75rem;color:var(--muted);font-family:var(--mono);margin-bottom:1.3rem}
+.about-roles{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1.3rem}
+.about-role{display:flex;align-items:center;gap:.55rem;background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:.45rem .8rem;font-size:.8rem;color:var(--text)}
+.sdot{width:7px;height:7px;border-radius:50%;background:var(--green);margin:0 auto .25rem;box-shadow:0 0 8px var(--green);animation:pd 2s ease-in-out infinite}
+@keyframes pd{0%,100%{box-shadow:0 0 8px var(--green)}50%{box-shadow:0 0 16px var(--green)}}
+.stxt{font-size:.75rem;color:var(--green);font-family:var(--mono)}
+.about-text p{color:var(--muted);margin-bottom:1.1rem;font-size:.94rem}.about-text p strong{color:var(--text)}
+.skg{margin-bottom:1.6rem}.skg-t{font-size:.7rem;color:var(--accent);font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem}
+.srow{display:flex;flex-wrap:wrap;gap:.4rem}
+.sk{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:.3rem .75rem;font-size:.78rem;color:var(--text);transition:all .2s}.sk:hover{border-color:var(--accent);color:var(--accent)}
+.works-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.4rem}
+.work-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .3s}
+.work-card:hover{transform:translateY(-5px);border-color:rgba(192,132,252,.4);box-shadow:0 20px 50px rgba(192,132,252,.1)}
+.wthumb{height:180px;display:flex;align-items:center;justify-content:center;font-size:3.5rem}
+.t1{background:linear-gradient(135deg,#160B2E,#2D1560)}.t2{background:linear-gradient(135deg,#0B1C2E,#0D3A5C)}.t3{background:linear-gradient(135deg,#1C0B1E,#3D1060)}.t4{background:linear-gradient(135deg,#0B2E1C,#0D5C38)}.t5{background:linear-gradient(135deg,#2E1C0B,#5C3A0D)}.t6{background:linear-gradient(135deg,#1C0B2E,#4A1060)}
+.wbody{padding:1.3rem}
+.wtags{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.6rem}
+.wtag{font-size:.68rem;font-family:var(--mono);padding:.15rem .5rem;border-radius:4px;border:1px solid}
+.wtd{color:var(--accent2);border-color:rgba(56,189,248,.3);background:rgba(56,189,248,.07)}.wte{color:var(--accent);border-color:rgba(192,132,252,.3);background:rgba(192,132,252,.07)}.wtw{color:var(--accent3);border-color:rgba(244,114,182,.3);background:rgba(244,114,182,.07)}.wtc{color:var(--green);border-color:rgba(74,222,128,.3);background:rgba(74,222,128,.07)}
+.wtitle{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:.4rem}
+.wdesc{font-size:.84rem;color:var(--muted)}
+.wfoot{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.3rem;border-top:1px solid var(--border)}
+.wtech{font-size:.72rem;color:var(--muted);font-family:var(--mono)}
+.wlink{color:var(--accent);text-decoration:none;font-size:.8rem;transition:gap .2s;display:flex;align-items:center;gap:.3rem}.wlink:hover{gap:.55rem}
+#services{background:var(--surface)}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.1rem}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.6rem;position:relative;overflow:hidden;transition:all .3s}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.sd::after{background:var(--accent2)}.se::after{background:var(--accent)}.sw::after{background:var(--accent3)}.sc::after{background:var(--green)}
+.svc-card:hover::after{transform:scaleX(1)}.svc-card:hover{transform:translateY(-3px)}
+.sico{font-size:2rem;margin-bottom:.8rem}
+.stitle{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.4rem}
+.sdesc{font-size:.83rem;color:var(--muted);margin-bottom:.8rem}.snote{font-size:.73rem;color:var(--accent);font-family:var(--mono)}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.timeline{position:relative;padding-left:1.4rem}.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border)}
+.tl-item{position:relative;padding-left:1.4rem;margin-bottom:2rem}
+.tl-item::before{content:'';position:absolute;left:-5px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 2px var(--accent)}
+.tly{font-family:var(--mono);font-size:.7rem;color:var(--accent);margin-bottom:.15rem}
+.tlt{font-weight:700;color:var(--white);font-size:.97rem;margin-bottom:.12rem}
+.tlw{font-size:.82rem;color:var(--muted);margin-bottom:.35rem}.tld{font-size:.84rem;color:var(--muted)}
+.certs{display:flex;flex-direction:column;gap:.7rem}
+.cert-card{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:1rem 1.2rem;display:flex;align-items:center;gap:.9rem;transition:border-color .2s}.cert-card:hover{border-color:var(--accent)}
+.cico{font-size:1.6rem;flex-shrink:0}.cname{font-weight:600;color:var(--white);font-size:.88rem;display:block}.corg{font-size:.75rem;color:var(--muted);font-family:var(--mono)}
+#booking{background:var(--bg)}
+.booking-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.bk-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem}
+.bk-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:.4rem}
+.bk-card > p{font-size:.85rem;color:var(--muted);margin-bottom:1.4rem}
+.cal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.cal-month{font-weight:600;color:var(--white);font-size:.95rem}
+.cal-nav{background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:.3rem .7rem;cursor:pointer;font-size:.9rem;transition:border-color .2s}.cal-nav:hover{border-color:var(--accent);color:var(--accent)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:1rem}
+.cdn{text-align:center;font-size:.65rem;color:var(--muted);font-family:var(--mono);padding:.3rem 0}
+.cd{text-align:center;padding:.45rem .2rem;border-radius:6px;font-size:.78rem;cursor:pointer;color:var(--muted);transition:all .18s;border:1px solid transparent}
+.cd.today{color:var(--accent);border-color:rgba(192,132,252,.3);background:rgba(192,132,252,.08)}
+.cd.avail:hover,.cd.sel{background:var(--accent);color:#0A0010;border-color:var(--accent);font-weight:600}
+.cd.avail{color:var(--text)}.cd.dis{opacity:.3;cursor:not-allowed}.cd.emp{cursor:default}
+.slots{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.2rem}
+.slot{padding:.4rem .85rem;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.8rem;font-family:var(--mono);cursor:pointer;transition:all .18s}
+.slot:hover,.slot.pk{background:var(--accent);color:#0A0010;border-color:var(--accent)}.slot.tk{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+#project-request{background:var(--surface)}
+.pr-form{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;max-width:720px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.fg{margin-bottom:1rem}
+.fg label{display:block;font-size:.78rem;color:var(--muted);font-family:var(--mono);letter-spacing:.05em;margin-bottom:.4rem;text-transform:uppercase}
+.fg input,.fg select,.fg textarea{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.65rem .9rem;color:var(--text);font-family:var(--sans);font-size:.88rem;outline:none;transition:border-color .2s;resize:none}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--accent)}.fg select option{background:var(--card)}
+.type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1rem}
+.tybtn{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.6rem .4rem;text-align:center;cursor:pointer;font-size:.78rem;color:var(--muted);transition:all .2s}.tybtn:hover,.tybtn.active{border-color:var(--accent2);color:var(--accent2);background:rgba(56,189,248,.07)}
+.tyico{font-size:1.3rem;display:block;margin-bottom:.2rem}
+.price-est{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between}
+.price-lbl{font-size:.8rem;color:var(--muted)}.price-val{font-family:var(--mono);font-size:1.1rem;color:var(--accent2);font-weight:700}
+#blog{background:var(--bg)}
+.blog-filter{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.filt{padding:.4rem 1rem;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:.8rem;cursor:pointer;transition:all .2s;font-family:var(--sans)}.filt:hover,.filt.active{border-color:var(--accent);color:var(--accent);background:rgba(192,132,252,.08)}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.4rem}
+.blog-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .3s;cursor:pointer}.blog-card:hover{transform:translateY(-4px);border-color:rgba(192,132,252,.35);box-shadow:0 16px 40px rgba(192,132,252,.08)}
+.bthumb{height:130px;display:flex;align-items:center;justify-content:center;font-size:3rem}
+.bt1{background:linear-gradient(135deg,#0f0830,#1a0f4a)}.bt2{background:linear-gradient(135deg,#081a10,#0f3020)}.bt3{background:linear-gradient(135deg,#1a0810,#3a0f20)}.bt4{background:linear-gradient(135deg,#0a1a2e,#102040)}.bt5{background:linear-gradient(135deg,#1a150a,#3a280f)}.bt6{background:linear-gradient(135deg,#0d0d20,#1a1a40)}
+.bbody{padding:1.2rem}.bcat{font-size:.7rem;font-family:var(--mono);color:var(--accent);margin-bottom:.5rem}.btitle{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.4rem;line-height:1.35}.bex{font-size:.82rem;color:var(--muted);line-height:1.6}
+.bmeta{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1.2rem;border-top:1px solid var(--border)}.bdate{font-size:.73rem;color:var(--muted);font-family:var(--mono)}.bread{font-size:.75rem;color:var(--accent)}
+.nl-box{margin-top:3rem;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+.nl-box h3{font-family:var(--serif);font-size:1.2rem;color:var(--white);margin-bottom:.3rem}.nl-box > div > p{font-size:.85rem;color:var(--muted)}
+.nl-form{display:flex;gap:.6rem;flex:1;min-width:260px}
+.nl-input{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.65rem 1rem;color:var(--text);font-family:var(--sans);font-size:.88rem;outline:none;transition:border-color .2s}.nl-input:focus{border-color:var(--accent3)}
+#resources{background:var(--surface)}
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.cv-box,.res-list{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem}
+.cv-box h3,.res-list h3{font-family:var(--serif);font-size:1.1rem;color:var(--white);margin-bottom:.3rem}
+.cv-box > p,.res-list > p{font-size:.85rem;color:var(--muted);margin-bottom:1.4rem}
+.cv-pre{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin-bottom:1.2rem;font-size:.82rem;color:var(--muted);line-height:1.9}
+.cv-pre strong{color:var(--text);display:block}.cv-pre .cvn{font-family:var(--serif);font-size:1.3rem;color:var(--white);text-align:center;margin-bottom:.5rem}.cv-pre .cvs{text-align:center;font-size:.8rem;color:var(--accent);margin-bottom:.8rem;font-family:var(--mono)}.cv-pre hr{border:none;border-top:1px solid var(--border);margin:.6rem 0}
+.dl-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.res-item{display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:.7rem;transition:border-color .2s}.res-item:hover{border-color:var(--accent)}
+.rico{font-size:1.6rem;flex-shrink:0}.rinfo{flex:1}.rname{font-weight:600;color:var(--white);font-size:.88rem;display:block}.rdesc{font-size:.75rem;color:var(--muted)}
+.rdl{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:.35rem .7rem;color:var(--accent);font-size:.75rem;cursor:pointer;transition:all .2s;text-decoration:none;white-space:nowrap}.rdl:hover{background:var(--accent);color:#0A0010}
+#contact{background:var(--bg)}
+.contact-c{max-width:660px;margin:0 auto;text-align:center}
+.cc-links{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;margin-top:2.2rem}
+.cc{display:flex;align-items:center;gap:.55rem;background:var(--card);border:1px solid var(--border);border-radius:9px;padding:.75rem 1.3rem;color:var(--text);text-decoration:none;font-size:.85rem;transition:all .22s}.cc:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(192,132,252,.1)}
+footer{padding:1.6rem 5vw;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.ft-c{font-size:.8rem;color:var(--muted)}.ft-b{font-family:var(--serif);font-weight:700;color:var(--white);font-style:italic}.ft-b em{color:var(--accent)}.ft-n{font-size:.8rem;color:var(--muted);font-family:var(--mono)}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .25s}
+.modal-bg.open{opacity:1;pointer-events:all}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;max-width:480px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(20px);transition:transform .25s}.modal-bg.open .modal{transform:translateY(0)}
+.modal h3{font-family:var(--serif);font-size:1.2rem;color:var(--white);margin-bottom:.3rem}
+.modal > p{font-size:.85rem;color:var(--muted);margin-bottom:1.3rem}
+.mclose{position:absolute;top:1rem;right:1rem;background:var(--surface);border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:.3rem .6rem;cursor:pointer;font-size:.9rem}.mclose:hover{color:var(--white)}
+.mhd{position:relative}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--card);border:1px solid var(--accent);color:var(--text);padding:.8rem 1.6rem;border-radius:100px;font-size:.88rem;z-index:600;transition:transform .35s;white-space:nowrap}.toast.show{transform:translateX(-50%) translateY(0)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.reveal.visible{opacity:1;transform:none}
+@media(max-width:900px){.about-grid,.exp-grid,.booking-grid,.res-grid{grid-template-columns:1fr}.about-card{position:static}.nav-roles{display:none}}
+@media(max-width:600px){.nav-links{display:none}.hero-stats{gap:1.6rem}.frow{grid-template-columns:1fr}.type-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Nawal<em>.</em></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#works">Works</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#booking">Book</a></li>
+    <li><a href="#project-request">Hire Me</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#resources">CV</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-roles">
+    <span class="rp rp-tech">Dev</span>
+    <span class="rp rp-edu">Teacher</span>
+    <span class="rp rp-write">Writer</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Available for freelance &amp; collaboration</p>
+    <h1><span class="n1">Nawal</span><span class="n2">Belgourari</span></h1>
+    <p class="hero-tag"><strong>Developer &middot; Teacher of English &middot; Writer &middot; Community Activist</strong><br>I build digital experiences, teach languages, craft stories, and drive change &mdash; because one passion is never enough.</p>
+    <div class="hero-cta">
+      <a href="#booking" class="btn btn-primary">&#128197; Book a Lesson</a>
+      <a href="#project-request" class="btn btn-teal">&#128187; Start a Project</a>
+      <a href="#works" class="btn btn-ghost">View My Work &darr;</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="stat-num">+30</span><span class="stat-label">Projects Delivered</span></div>
+      <div><span class="stat-num">200+</span><span class="stat-label">Students Taught</span></div>
+      <div><span class="stat-num">4</span><span class="stat-label">Fields Mastered</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-grid reveal">
+    <div class="about-card">
+      <div class="avatar-ring"><div class="avatar-inner">&#128105;&#8205;&#128187;</div></div>
+      <div class="about-name">Nawal Belgourari</div>
+      <div class="about-loc">&#128205; El Bayadh &mdash; Sidi Sheikh, Algeria</div>
+      <div class="about-roles">
+        <div class="about-role">&#128187; Web Developer &amp; Programmer</div>
+        <div class="about-role">&#128218; English Language Professor</div>
+        <div class="about-role">&#9997;&#65039; Writer &amp; Author</div>
+        <div class="about-role">&#127807; Community Activist</div>
+      </div>
+      <div class="sdot"></div><div class="stxt">Open to opportunities</div>
+    </div>
+    <div class="about-text">
+      <p class="sec-label">&#8212; Who I Am</p>
+      <h2 class="sec-title">A multidisciplinary<br>creative mind</h2>
+      <p>I am Nawal Belgourari &mdash; a developer, educator, writer and community builder from <strong>El Bayadh, Sidi Sheikh, Algeria</strong>. My work lives at the intersection of <strong>code, language, and people</strong>.</p>
+      <p>My academic journey spans <strong>two universities and a grande ecole</strong>: degrees in <strong>Science &amp; Technology Engineering</strong>, <strong>Computer Engineering</strong>, and I teach <strong>English Language</strong> as a professor &mdash; a rare combination that makes me equally at home in a lecture hall, a terminal, or a blank page.</p>
+      <p>As a <strong>writer</strong>, I tell stories that matter. As an <strong>activist</strong>, I invest in my community through associative action. I believe the most interesting things happen when disciplines collide.</p>
+      <div class="skg"><div class="skg-t">// Development</div><div class="srow"><span class="sk">HTML/CSS</span><span class="sk">JavaScript</span><span class="sk">React</span><span class="sk">PHP</span><span class="sk">MySQL</span><span class="sk">WordPress</span><span class="sk">Git</span><span class="sk">Figma</span></div></div>
+      <div class="skg"><div class="skg-t">// Education &amp; Writing</div><div class="srow"><span class="sk">English Teaching</span><span class="sk">Curriculum Design</span><span class="sk">Creative Writing</span><span class="sk">Translation</span><span class="sk">Public Speaking</span></div></div>
+      <div class="skg"><div class="skg-t">// Community</div><div class="srow"><span class="sk">Project Management</span><span class="sk">Event Organisation</span><span class="sk">Volunteering</span><span class="sk">Advocacy</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="works" style="background:var(--bg)">
+  <p class="sec-label reveal">&#8212; Selected Work</p>
+  <h2 class="sec-title reveal">Projects &amp; Creations</h2>
+  <p class="sec-desc reveal">A selection spanning code, teaching, writing, and community.</p>
+  <div class="works-grid">
+    <div class="work-card reveal"><div class="wthumb t1">&#128717;</div><div class="wbody"><div class="wtags"><span class="wtag wtd">Web Dev</span><span class="wtag wtd">E-Commerce</span></div><h3 class="wtitle">Local Artisan Shop</h3><p class="wdesc">Full online shop for a local Algerian artisan brand with product catalog, cart and order management.</p></div><div class="wfoot"><span class="wtech">HTML &middot; CSS &middot; PHP &middot; MySQL</span><a href="#" class="wlink">View &rarr;</a></div></div>
+    <div class="work-card reveal"><div class="wthumb t2">&#128218;</div><div class="wbody"><div class="wtags"><span class="wtag wte">Education</span><span class="wtag wtd">Web Dev</span></div><h3 class="wtitle">EnglishPath &mdash; Learning Platform</h3><p class="wdesc">Interactive platform for Algerian students to practice English through exercises and quizzes.</p></div><div class="wfoot"><span class="wtech">React &middot; Node.js</span><a href="#" class="wlink">View &rarr;</a></div></div>
+    <div class="work-card reveal"><div class="wthumb t3">&#9997;&#65039;</div><div class="wbody"><div class="wtags"><span class="wtag wtw">Writing</span><span class="wtag wtw">Fiction</span></div><h3 class="wtitle">Short Stories &mdash; "Sahara Voices"</h3><p class="wdesc">Bilingual collection of short stories inspired by life in southern Algeria.</p></div><div class="wfoot"><span class="wtech">Arabic &middot; English</span><a href="#" class="wlink">Read &rarr;</a></div></div>
+    <div class="work-card reveal"><div class="wthumb t4">&#127807;</div><div class="wbody"><div class="wtags"><span class="wtag wtc">Community</span><span class="wtag wtd">Web Dev</span></div><h3 class="wtitle">Youth Association Website</h3><p class="wdesc">Digital home for a local youth association with event listing, member registration, and news blog.</p></div><div class="wfoot"><span class="wtech">WordPress</span><a href="#" class="wlink">View &rarr;</a></div></div>
+    <div class="work-card reveal"><div class="wthumb t5">&#127891;</div><div class="wbody"><div class="wtags"><span class="wtag wte">Education</span><span class="wtag wtw">Content</span></div><h3 class="wtitle">IELTS Prep &mdash; Curriculum</h3><p class="wdesc">Complete IELTS preparation curriculum for intermediate learners with 4 skill modules.</p></div><div class="wfoot"><span class="wtech">Curriculum &middot; PDF</span><a href="#" class="wlink">Details &rarr;</a></div></div>
+    <div class="work-card reveal"><div class="wthumb t6">&#128240;</div><div class="wbody"><div class="wtags"><span class="wtag wtw">Writing</span><span class="wtag wtc">Advocacy</span></div><h3 class="wtitle">Op-Eds &mdash; Education &amp; Society</h3><p class="wdesc">Published essays on education reform, women's empowerment, and digital inclusion in Algeria.</p></div><div class="wfoot"><span class="wtech">Arabic &middot; French &middot; English</span><a href="#" class="wlink">Read &rarr;</a></div></div>
+  </div>
+</section>
+
+<section id="services">
+  <p class="sec-label reveal">&#8212; What I Offer</p>
+  <h2 class="sec-title reveal">Services</h2>
+  <p class="sec-desc reveal">Whether you need a website, a tutor, a writer, or a speaker &mdash; I am here.</p>
+  <div class="svc-grid">
+    <div class="svc-card sd reveal"><div class="sico">&#128187;</div><h3 class="stitle">Website Development</h3><p class="sdesc">Custom websites built from scratch &mdash; clean code, mobile-first, fast.</p><div class="snote">&rarr; Landing pages &middot; Portfolios &middot; Business sites</div></div>
+    <div class="svc-card sd reveal"><div class="sico">&#127912;</div><h3 class="stitle">Web Design &amp; UI</h3><p class="sdesc">Beautiful interfaces that feel intuitive. Figma to pixel-perfect HTML/CSS.</p><div class="snote">&rarr; UI design &middot; Prototyping &middot; Redesigns</div></div>
+    <div class="svc-card se reveal"><div class="sico">&#128218;</div><h3 class="stitle">English Teaching</h3><p class="sdesc">One-on-one or group lessons &mdash; conversation, grammar, IELTS prep.</p><div class="snote">&rarr; Beginner to Advanced &middot; Online &amp; in-person</div></div>
+    <div class="svc-card sw reveal"><div class="sico">&#9997;&#65039;</div><h3 class="stitle">Writing &amp; Content</h3><p class="sdesc">Blog posts, articles, web copy, creative writing in Arabic, French or English.</p><div class="snote">&rarr; SEO content &middot; Copywriting &middot; Translation</div></div>
+    <div class="svc-card sc reveal"><div class="sico">&#127908;</div><h3 class="stitle">Workshops &amp; Talks</h3><p class="sdesc">Digital skills, creative writing, and youth empowerment workshops.</p><div class="snote">&rarr; Schools &middot; NGOs &middot; Youth organisations</div></div>
+    <div class="svc-card sc reveal"><div class="sico">&#129309;</div><h3 class="stitle">Project Consulting</h3><p class="sdesc">Technical &amp; strategic advice for associations and startups going digital.</p><div class="snote">&rarr; Strategy &middot; Digital presence &middot; Tools</div></div>
+  </div>
+</section>
+
+<section id="experience" style="background:var(--surface)">
+  <div class="exp-grid reveal">
+    <div>
+      <p class="sec-label">&#8212; Journey</p>
+      <h2 class="sec-title">Experience</h2>
+      <div class="timeline" style="margin-top:1.5rem">
+        <div class="tl-item"><span class="tly">2022 &mdash; Present</span><div class="tlt">Freelance Web Developer</div><div class="tlw">&#127760; Self-employed, Algeria</div><div class="tld">Building websites and digital tools for local businesses, NGOs and individuals across Algeria.</div></div>
+        <div class="tl-item"><span class="tly">2020 &mdash; Present</span><div class="tlt">English Language Professor</div><div class="tlw">&#127979; Higher Education &amp; Private Tuition</div><div class="tld">Teaching English at university level and private sessions &mdash; all levels from beginner to advanced.</div></div>
+        <div class="tl-item"><span class="tly">2021 &mdash; Present</span><div class="tlt">Writer &amp; Content Creator</div><div class="tlw">&#9997;&#65039; Independent</div><div class="tld">Publishing articles, short stories and opinion pieces on education, society and technology.</div></div>
+        <div class="tl-item"><span class="tly">2019 &mdash; Present</span><div class="tlt">Community Activist &amp; Volunteer</div><div class="tlw">&#127807; Local Associations, El Bayadh</div><div class="tld">Co-organising youth events, digital literacy workshops and social campaigns in the region.</div></div>
+      </div>
+    </div>
+    <div>
+      <p class="sec-label">&#8212; Education</p>
+      <h2 class="sec-title">Qualifications</h2>
+      <div class="certs" style="margin-top:1.5rem">
+        <div class="cert-card"><span class="cico">&#127891;</span><div><span class="cname">Engineering &mdash; Sciences &amp; Technology</span><span class="corg">University &middot; Algeria</span></div></div>
+        <div class="cert-card"><span class="cico">&#128187;</span><div><span class="cname">Engineering &mdash; Computer Science</span><span class="corg">University / Grande Ecole &middot; Algeria</span></div></div>
+        <div class="cert-card"><span class="cico">&#128220;</span><div><span class="cname">English Language &mdash; Professor</span><span class="corg">Higher Education &middot; Algeria</span></div></div>
+        <div class="cert-card"><span class="cico">&#128187;</span><div><span class="cname">Web Development &mdash; Full Stack</span><span class="corg">Self-taught + Online Certifications</span></div></div>
+        <div class="cert-card"><span class="cico">&#127807;</span><div><span class="cname">Youth Leadership &amp; Project Management</span><span class="corg">Associative Training Programme</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <p class="sec-label reveal">&#8212; Book a Session</p>
+  <h2 class="sec-title reveal">Reserve an English Lesson</h2>
+  <p class="sec-desc reveal">Choose your date, time and level &mdash; I will confirm within 24 hours.</p>
+  <div class="booking-grid reveal">
+    <div class="bk-card">
+      <h3>&#128197; Choose a Date</h3>
+      <p>Available days shown in white. Select a day then pick a time.</p>
+      <div class="cal-header">
+        <button class="cal-nav" onclick="changeMonth(-1)">&#8249;</button>
+        <span class="cal-month" id="calLabel"></span>
+        <button class="cal-nav" onclick="changeMonth(1)">&#8250;</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+      <div id="slotsSection" style="display:none">
+        <p style="font-size:.8rem;color:var(--muted);margin-bottom:.6rem">Available times for <span id="selDateLabel" style="color:var(--accent)"></span></p>
+        <div class="slots" id="slotsContainer"></div>
+      </div>
+    </div>
+    <div class="bk-card">
+      <h3>&#128221; Your Details</h3>
+      <p>Fill in your info and click Book &mdash; it is free to request.</p>
+      <div class="fg"><label>Your Name</label><input type="text" id="bkName" placeholder="e.g. Ahmed Benali"></div>
+      <div class="fg"><label>Email Address</label><input type="email" id="bkEmail" placeholder="your@email.com"></div>
+      <div class="fg"><label>Your Level</label>
+        <select id="bkLevel">
+          <option value="">&#8212; Select your level &#8212;</option>
+          <option>Beginner (A1&#8211;A2)</option><option>Elementary (A2&#8211;B1)</option>
+          <option>Intermediate (B1&#8211;B2)</option><option>Upper-Intermediate (B2&#8211;C1)</option>
+          <option>Advanced (C1&#8211;C2)</option><option>IELTS / TOEFL Preparation</option>
+          <option>Conversation Practice</option>
+        </select>
+      </div>
+      <div class="fg"><label>Session Type</label>
+        <select id="bkType">
+          <option value="">&#8212; Choose &#8212;</option>
+          <option>1-on-1 Online (Zoom / Meet)</option><option>Group Session (2&#8211;4 students)</option>
+          <option>In-Person (El Bayadh area)</option><option>Intensive Workshop (3 hours)</option>
+        </select>
+      </div>
+      <div class="fg"><label>Notes (optional)</label><textarea id="bkNotes" rows="2" placeholder="Anything specific you want to focus on..."></textarea></div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="submitBooking()">&#128197; Request This Session</button>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT REQUEST -->
+<section id="project-request">
+  <p class="sec-label reveal">&#8212; Hire Me</p>
+  <h2 class="sec-title reveal">Start a Web Project</h2>
+  <p class="sec-desc reveal">Tell me about your project &mdash; I will send a proposal within 48 hours.</p>
+  <div class="pr-form reveal">
+    <div class="frow">
+      <div class="fg"><label>Your Name</label><input type="text" id="prName" placeholder="Full name"></div>
+      <div class="fg"><label>Email</label><input type="email" id="prEmail" placeholder="your@email.com"></div>
+    </div>
+    <div class="fg"><label>Phone / WhatsApp (optional)</label><input type="text" id="prPhone" placeholder="+213 ..."></div>
+    <div class="fg">
+      <label>Project Type</label>
+      <div class="type-grid">
+        <div class="tybtn" onclick="selType(this,'Landing Page')"><span class="tyico">&#128421;&#65039;</span>Landing Page</div>
+        <div class="tybtn" onclick="selType(this,'E-Commerce')"><span class="tyico">&#128717;</span>E-Commerce</div>
+        <div class="tybtn" onclick="selType(this,'Portfolio')"><span class="tyico">&#128100;</span>Portfolio</div>
+        <div class="tybtn" onclick="selType(this,'Business Website')"><span class="tyico">&#127970;</span>Business Site</div>
+        <div class="tybtn" onclick="selType(this,'Web App')"><span class="tyico">&#9881;&#65039;</span>Web App</div>
+        <div class="tybtn" onclick="selType(this,'Other')"><span class="tyico">&#10024;</span>Other</div>
+      </div>
+    </div>
+    <div class="frow">
+      <div class="fg"><label>Budget Range</label>
+        <select id="prBudget" onchange="updatePrice()">
+          <option value="">&#8212; Select &#8212;</option>
+          <option value="a">5,000 &#8211; 15,000 DZD</option>
+          <option value="b">15,000 &#8211; 40,000 DZD</option>
+          <option value="c">40,000 &#8211; 100,000 DZD</option>
+          <option value="d">100,000 DZD +</option>
+          <option value="e">To discuss</option>
+        </select>
+      </div>
+      <div class="fg"><label>Deadline</label>
+        <select id="prDeadline">
+          <option value="">&#8212; Select &#8212;</option>
+          <option>Less than 1 week</option><option>1 &#8211; 2 weeks</option>
+          <option>2 &#8211; 4 weeks</option><option>1 &#8211; 2 months</option><option>No rush</option>
+        </select>
+      </div>
+    </div>
+    <div class="price-est"><span class="price-lbl">Estimated range for selected options</span><span class="price-val" id="priceDisp">Select type &amp; budget above</span></div>
+    <div class="fg"><label>Project Description</label><textarea id="prDesc" rows="4" placeholder="Describe your project: what does it do, who is it for, what features do you need..."></textarea></div>
+    <div class="fg"><label>Reference Website (optional)</label><input type="text" id="prRef" placeholder="https://example.com"></div>
+    <button class="btn btn-teal" style="width:100%;justify-content:center" onclick="submitProject()">&#128640; Send Project Request</button>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <p class="sec-label reveal">&#8212; My Writing</p>
+  <h2 class="sec-title reveal">Blog &amp; Articles</h2>
+  <p class="sec-desc reveal">Thoughts on technology, education, language, and life in Algeria.</p>
+  <div class="blog-filter reveal">
+    <button class="filt active" onclick="filterBlog(this,'all')">All</button>
+    <button class="filt" onclick="filterBlog(this,'tech')">&#128187; Technology</button>
+    <button class="filt" onclick="filterBlog(this,'edu')">&#128218; Education</button>
+    <button class="filt" onclick="filterBlog(this,'lit')">&#9997;&#65039; Literature</button>
+    <button class="filt" onclick="filterBlog(this,'com')">&#127807; Community</button>
+  </div>
+  <div class="blog-grid">
+    <div class="blog-card reveal" data-cat="tech" onclick="openPost(0)"><div class="bthumb bt1">&#128187;</div><div class="bbody"><div class="bcat">&#128187; Technology</div><h3 class="btitle">How I Built My First Website from Scratch</h3><p class="bex">A beginner&#8217;s journey through HTML, CSS and the joy of seeing your first page go live...</p></div><div class="bmeta"><span class="bdate">June 2025</span><span class="bread">4 min read &rarr;</span></div></div>
+    <div class="blog-card reveal" data-cat="edu" onclick="openPost(1)"><div class="bthumb bt2">&#128218;</div><div class="bbody"><div class="bcat">&#128218; Education</div><h3 class="btitle">5 Mistakes Algerian Students Make When Learning English</h3><p class="bex">After teaching hundreds of students, I identified the patterns that hold most learners back...</p></div><div class="bmeta"><span class="bdate">May 2025</span><span class="bread">6 min read &rarr;</span></div></div>
+    <div class="blog-card reveal" data-cat="lit" onclick="openPost(2)"><div class="bthumb bt3">&#9997;&#65039;</div><div class="bbody"><div class="bcat">&#9997;&#65039; Literature</div><h3 class="btitle">Writing Bilingually: Between Arabic and English</h3><p class="bex">What it means to think in two languages and write in two worlds at the same time...</p></div><div class="bmeta"><span class="bdate">April 2025</span><span class="bread">5 min read &rarr;</span></div></div>
+    <div class="blog-card reveal" data-cat="com" onclick="openPost(3)"><div class="bthumb bt4">&#127807;</div><div class="bbody"><div class="bcat">&#127807; Community</div><h3 class="btitle">Why Youth Associations Matter in El Bayadh</h3><p class="bex">A reflection on two years of community work and the small changes that add up to big impact...</p></div><div class="bmeta"><span class="bdate">March 2025</span><span class="bread">7 min read &rarr;</span></div></div>
+    <div class="blog-card reveal" data-cat="tech" onclick="openPost(4)"><div class="bthumb bt5">&#128640;</div><div class="bbody"><div class="bcat">&#128187; Technology</div><h3 class="btitle">The Future of Tech Education in Algeria</h3><p class="bex">Digital skills are the new literacy. Here is how Algeria can catch up and what is already working...</p></div><div class="bmeta"><span class="bdate">Feb 2025</span><span class="bread">8 min read &rarr;</span></div></div>
+    <div class="blog-card reveal" data-cat="edu" onclick="openPost(5)"><div class="bthumb bt6">&#127891;</div><div class="bbody"><div class="bcat">&#128218; Education</div><h3 class="btitle">IELTS vs TOEFL: Which One Should You Take?</h3><p class="bex">A practical guide for Algerian students navigating English proficiency exams...</p></div><div class="bmeta"><span class="bdate">Jan 2025</span><span class="bread">5 min read &rarr;</span></div></div>
+  </div>
+  <div class="nl-box reveal">
+    <div><h3>&#128236; Subscribe to My Newsletter</h3><p>New articles, free resources and teaching tips &mdash; straight to your inbox.</p></div>
+    <div class="nl-form"><input class="nl-input" type="email" id="nlEmail" placeholder="your@email.com"><button class="btn btn-primary" onclick="subscribeNL()">Subscribe</button></div>
+  </div>
+</section>
+
+<!-- CV & RESOURCES -->
+<section id="resources">
+  <p class="sec-label reveal">&#8212; Download</p>
+  <h2 class="sec-title reveal">CV &amp; Free Resources</h2>
+  <p class="sec-desc reveal">Download my resume or grab free materials for your English learning journey.</p>
+  <div class="res-grid reveal">
+    <div class="cv-box">
+      <h3>&#128196; My Resume / CV</h3>
+      <p>Available in English and Arabic &mdash; download the version that suits you.</p>
+      <div class="cv-pre">
+        <div class="cvn">Nawal Belgourari</div>
+        <div class="cvs">Developer &middot; English Professor &middot; Writer &middot; Activist</div>
+        <hr>
+        <strong>Education</strong>
+        MSc Computer Engineering &middot; BSc Science &amp; Technology<br>English Language &mdash; Higher Education Professor
+        <hr>
+        <strong>Experience</strong>
+        Freelance Web Developer (2022&ndash;present)<br>English Language Professor (2020&ndash;present)<br>Community Activist (2019&ndash;present)
+        <hr>
+        <strong>Skills</strong>
+        HTML/CSS &middot; JavaScript &middot; React &middot; PHP &middot; MySQL<br>English Teaching &middot; Curriculum Design &middot; Writing
+      </div>
+      <div class="dl-btns">
+        <button class="btn btn-primary" onclick="dlCV('en')">&#11015; Download EN</button>
+        <button class="btn btn-ghost" onclick="dlCV('ar')">&#11015; &#1578;&#1581;&#1605;&#1610;&#1604; &#1593;&#1585;&#1576;&#1610;</button>
+      </div>
+    </div>
+    <div class="res-list">
+      <h3>&#127873; Free Learning Resources</h3>
+      <p>Handpicked materials to help you improve your English and tech skills.</p>
+      <div class="res-item"><span class="rico">&#128221;</span><div class="rinfo"><span class="rname">IELTS Writing Templates</span><span class="rdesc">Task 1 &amp; Task 2 model answers with band 7+ structures</span></div><a class="rdl" href="#" onclick="dlRes(event,'IELTS Templates')">&#11015; PDF</a></div>
+      <div class="res-item"><span class="rico">&#128483;&#65039;</span><div class="rinfo"><span class="rname">English Conversation Starters</span><span class="rdesc">100 prompts to practice speaking with confidence</span></div><a class="rdl" href="#" onclick="dlRes(event,'Conversation Starters')">&#11015; PDF</a></div>
+      <div class="res-item"><span class="rico">&#128187;</span><div class="rinfo"><span class="rname">HTML/CSS Starter Kit</span><span class="rdesc">Clean boilerplate to kickstart any web project</span></div><a class="rdl" href="#" onclick="dlRes(event,'HTML CSS Kit')">&#11015; ZIP</a></div>
+      <div class="res-item"><span class="rico">&#128214;</span><div class="rinfo"><span class="rname">Academic English Vocabulary</span><span class="rdesc">500 essential words for university-level writing</span></div><a class="rdl" href="#" onclick="dlRes(event,'Academic Vocab')">&#11015; PDF</a></div>
+      <div class="res-item"><span class="rico">&#127912;</span><div class="rinfo"><span class="rname">Figma UI Kit &mdash; Arabic Layouts</span><span class="rdesc">RTL-ready components for Arabic web design</span></div><a class="rdl" href="#" onclick="dlRes(event,'Figma UI Kit')">&#11015; Figma</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--bg)">
+  <div class="contact-c reveal">
+    <p class="sec-label" style="justify-content:center">&#8212; Let&#8217;s Talk</p>
+    <h2 class="sec-title">Have a project, a class,<br><em style="font-family:var(--serif);color:var(--accent)">or a story?</em></h2>
+    <p style="color:var(--muted);margin-top:.8rem;font-size:.95rem">Whether you need a website built, a language tutor, a writer or a speaker &mdash; I would love to hear from you.</p>
+    <a href="mailto:nawal.belgourari@email.com" class="btn btn-primary" style="margin:2rem auto;display:inline-flex">&#9993;&#65039; nawal.belgourari@email.com</a>
+    <div class="cc-links">
+      <a href="#" class="cc">&#128188; LinkedIn</a>
+      <a href="#" class="cc">&#128025; GitHub</a>
+      <a href="#" class="cc">&#128247; Instagram</a>
+      <a href="#" class="cc">&#9997;&#65039; Medium</a>
+      <a href="#" class="cc">&#128241; WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="ft-c">&copy; 2025 Nawal Belgourari &mdash; All rights reserved</span>
+  <span class="ft-b">Nawal<em>.</em></span>
+  <span class="ft-n">Made with &#9829; in El Bayadh &#127465;&#127487;</span>
+</footer>
+
+<!-- BLOG POST MODAL -->
+<div class="modal-bg" id="postModal" onclick="closePMOut(event)">
+  <div class="modal">
+    <div class="mhd">
+      <button class="mclose" onclick="closePM()">&#10005;</button>
+      <p id="mCat" style="font-size:.75rem;color:var(--accent);font-family:var(--mono);margin-bottom:.4rem"></p>
+      <h3 id="mTitle"></h3>
+      <p id="mDate" style="font-size:.75rem;color:var(--muted);font-family:var(--mono);margin:.3rem 0 1rem"></p>
+    </div>
+    <div id="mContent" style="font-size:.88rem;color:var(--muted);line-height:1.85"></div>
+  </div>
+</div>
+
+<!-- BOOKING CONFIRM MODAL -->
+<div class="modal-bg" id="bkModal" onclick="closeBKOut(event)">
+  <div class="modal" style="text-align:center">
+    <div style="font-size:3rem;margin-bottom:1rem">&#9989;</div>
+    <h3 style="margin-bottom:.5rem">Booking Request Sent!</h3>
+    <p>Thank you <strong id="bkCName"></strong>! Your session request has been received. I will confirm within 24 hours at <strong id="bkCEmail"></strong>.</p>
+    <br><button class="btn btn-ghost" style="margin:0 auto" onclick="document.getElementById('bkModal').classList.remove('open')">Close</button>
+  </div>
+</div>
+
+<!-- PROJECT CONFIRM MODAL -->
+<div class="modal-bg" id="prModal" onclick="closePROut(event)">
+  <div class="modal" style="text-align:center">
+    <div style="font-size:3rem;margin-bottom:1rem">&#128640;</div>
+    <h3 style="margin-bottom:.5rem">Project Request Sent!</h3>
+    <p>Thank you <strong id="prCName"></strong>! I have received your project brief and will send a proposal within 48 hours.</p>
+    <br><button class="btn btn-ghost" style="margin:0 auto" onclick="document.getElementById('prModal').classList.remove('open')">Close</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// REVEAL
+var io2 = new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(function(el,i){el.style.transitionDelay=(i%5)*0.06+'s';io2.observe(el);});
+
+// TOAST
+function showToast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},3000);}
+
+// CALENDAR
+var calDate=new Date(),selDay=null,selSlot=null;
+var avail={1:[1,3,5],2:[2,4],3:[1,2,4,5],4:[3,4],5:[1,2,3],6:[2,4,5],8:[1,3],9:[2,3,5],10:[1,4],11:[2,3,4],13:[1,3,5],14:[2,4],15:[1,2,5],16:[3,4],17:[1,2,3],20:[2,4,5],21:[1,3],22:[2,3,4],23:[1,4,5],24:[2,3],27:[1,2,3],28:[4,5]};
+var times=['09:00','10:30','12:00','14:00','16:30'];
+var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+function buildCal(){
+  document.getElementById('calLabel').textContent=months[calDate.getMonth()]+' '+calDate.getFullYear();
+  var g=document.getElementById('calGrid');g.innerHTML='';
+  ['Su','Mo','Tu','We','Th','Fr','Sa'].forEach(function(d){var e=document.createElement('div');e.className='cdn';e.textContent=d;g.appendChild(e);});
+  var first=new Date(calDate.getFullYear(),calDate.getMonth(),1).getDay();
+  var days=new Date(calDate.getFullYear(),calDate.getMonth()+1,0).getDate();
+  var today=new Date();
+  for(var i=0;i<first;i++){var e=document.createElement('div');e.className='cd emp';g.appendChild(e);}
+  for(var d=1;d<=days;d++){
+    var e=document.createElement('div');e.textContent=d;
+    var isTod=today.getDate()===d&&today.getMonth()===calDate.getMonth()&&today.getFullYear()===calDate.getFullYear();
+    var isPast=new Date(calDate.getFullYear(),calDate.getMonth(),d)<new Date(today.getFullYear(),today.getMonth(),today.getDate());
+    var av=avail[d];
+    if(isPast){e.className='cd dis';}
+    else if(av){e.className='cd avail'+(isTod?' today':'')+(selDay===d?' sel':'');(function(dd){e.onclick=function(){selDay2(dd);};})(d);}
+    else{e.className='cd dis'+(isTod?' today':'');}
+    g.appendChild(e);
+  }
+}
+
+function selDay2(d){
+  selDay=d;selSlot=null;buildCal();
+  document.getElementById('selDateLabel').textContent=d+' '+months[calDate.getMonth()];
+  var av=avail[d]||[];
+  var c=document.getElementById('slotsContainer');c.innerHTML='';
+  times.forEach(function(t,i){
+    var e=document.createElement('div');
+    e.className='slot'+(av.indexOf(i+1)===-1?' tk':'');
+    e.textContent=t;
+    if(av.indexOf(i+1)!==-1){
+      (function(tt,el){el.onclick=function(){document.querySelectorAll('.slot').forEach(function(s){s.classList.remove('pk');});el.classList.add('pk');selSlot=tt;};})(t,e);
+    }
+    c.appendChild(e);
+  });
+  document.getElementById('slotsSection').style.display='block';
+}
+
+function changeMonth(dir){calDate.setMonth(calDate.getMonth()+dir);selDay=null;selSlot=null;document.getElementById('slotsSection').style.display='none';buildCal();}
+buildCal();
+
+function submitBooking(){
+  var n=document.getElementById('bkName').value.trim();
+  var em=document.getElementById('bkEmail').value.trim();
+  var lv=document.getElementById('bkLevel').value;
+  var ty=document.getElementById('bkType').value;
+  if(!n){showToast('Please enter your name');return;}
+  if(!em||em.indexOf('@')<0){showToast('Please enter a valid email');return;}
+  if(!lv){showToast('Please select your level');return;}
+  if(!ty){showToast('Please select a session type');return;}
+  if(!selDay){showToast('Please select a date on the calendar');return;}
+  if(!selSlot){showToast('Please select a time slot');return;}
+  document.getElementById('bkCName').textContent=n;
+  document.getElementById('bkCEmail').textContent=em;
+  document.getElementById('bkModal').classList.add('open');
+  document.getElementById('bkName').value='';document.getElementById('bkEmail').value='';
+  document.getElementById('bkLevel').value='';document.getElementById('bkType').value='';
+  document.getElementById('bkNotes').value='';
+  selDay=null;selSlot=null;document.getElementById('slotsSection').style.display='none';buildCal();
+}
+function closeBKOut(e){if(e.target.id==='bkModal')document.getElementById('bkModal').classList.remove('open');}
+
+// PROJECT
+var selType='';
+function selType2(el,ty){document.querySelectorAll('.tybtn').forEach(function(b){b.classList.remove('active');});el.classList.add('active');selType=ty;updatePrice();}
+
+// alias used by onclick
+function selType(el,ty){selType2(el,ty);}
+
+var prices={
+  'Landing Page':{a:'5,000-12,000 DZD',b:'12,000-25,000 DZD',c:'25,000-50,000 DZD',d:'Negotiable',e:'To discuss'},
+  'E-Commerce':{a:'On request',b:'20,000-40,000 DZD',c:'40,000-90,000 DZD',d:'90,000 DZD+',e:'To discuss'},
+  'Portfolio':{a:'5,000-10,000 DZD',b:'10,000-20,000 DZD',c:'20,000-35,000 DZD',d:'Custom',e:'To discuss'},
+  'Business Website':{a:'8,000-15,000 DZD',b:'15,000-35,000 DZD',c:'35,000-80,000 DZD',d:'80,000 DZD+',e:'To discuss'},
+  'Web App':{a:'On request',b:'On request',c:'50,000-100,000 DZD',d:'100,000 DZD+',e:'To discuss'},
+  'Other':{a:'Contact for quote',b:'Contact for quote',c:'Contact for quote',d:'Contact for quote',e:'To discuss'}
+};
+
+function updatePrice(){
+  var b=document.getElementById('prBudget').value;
+  var d=document.getElementById('priceDisp');
+  if(!selType||!b){d.textContent='Select type & budget above';return;}
+  var p=prices[selType];
+  d.textContent=(p&&p[b])?p[b]:'Contact for quote';
+}
+
+function submitProject(){
+  var n=document.getElementById('prName').value.trim();
+  var em=document.getElementById('prEmail').value.trim();
+  var b=document.getElementById('prBudget').value;
+  var desc=document.getElementById('prDesc').value.trim();
+  if(!n){showToast('Please enter your name');return;}
+  if(!em||em.indexOf('@')<0){showToast('Please enter a valid email');return;}
+  if(!selType){showToast('Please select a project type');return;}
+  if(!b){showToast('Please select a budget range');return;}
+  if(desc.length<20){showToast('Please describe your project (min 20 characters)');return;}
+  document.getElementById('prCName').textContent=n;
+  document.getElementById('prModal').classList.add('open');
+  ['prName','prEmail','prPhone','prDesc','prRef'].forEach(function(id){document.getElementById(id).value='';});
+  document.getElementById('prBudget').value='';document.getElementById('prDeadline').value='';
+  selType='';document.querySelectorAll('.tybtn').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('priceDisp').textContent='Select type & budget above';
+}
+function closePROut(e){if(e.target.id==='prModal')document.getElementById('prModal').classList.remove('open');}
+
+// BLOG
+var posts=[
+  {cat:'Technology',title:'How I Built My First Website from Scratch',date:'June 2025',body:'It started with a blank text file and a lot of curiosity. I remember the exact moment I typed my first HTML tag and saw it render in the browser. That feeling of making something from nothing is what got me hooked on web development.<br><br>I spent weeks learning HTML structure, CSS styling, and then JavaScript interactivity. The hardest part was not the syntax. It was learning to think like a developer: breaking problems down into small, solvable pieces.<br><br>My advice to anyone starting out: build something real. Do not just follow tutorials. Pick a small project you care about and struggle through it. The struggle is where the real learning happens.'},
+  {cat:'Education',title:'5 Mistakes Algerian Students Make When Learning English',date:'May 2025',body:'After teaching English to hundreds of Algerian students across different levels, I have noticed recurring patterns that hold learners back. Here are the five most common mistakes:<br><br>1. Translating word by word from Arabic or French instead of thinking in English.<br>2. Waiting until they are ready before speaking. There is no perfect moment. Start now.<br>3. Focusing only on grammar rules rather than actual communication.<br>4. Avoiding reading in English. Reading is the fastest way to absorb vocabulary naturally.<br>5. Giving up after the first plateau. Every learner hits a wall around B1 level. Push through it.<br><br>The students who succeed are the ones who make English part of their daily life, not just a classroom subject.'},
+  {cat:'Literature',title:'Writing Bilingually: Between Arabic and English',date:'April 2025',body:'There is a particular kind of loneliness in being a bilingual writer. Each language carries worlds that do not fully translate into the other. When I write in Arabic, I reach for warmth, for poetry, for the desert light of southern Algeria. When I write in English, I reach for precision, for distance, for the ability to step outside my own story.<br><br>I have learned that being between languages is not a weakness. It is a superpower. I can write for audiences across the Arab world and beyond. I can move between intimacy and universality.<br><br>If you are a bilingual writer, do not try to choose. Let both languages live in you. The tension between them is where your most original voice hides.'},
+  {cat:'Community',title:'Why Youth Associations Matter in El Bayadh',date:'March 2025',body:'When I first joined a youth association in El Bayadh, I expected to organise a few events and call it done. Two years later, I understand that community work is the long game. Invisible most of the time, essential always.<br><br>We organised digital literacy workshops for students who had never touched a real keyboard. We ran empowerment sessions in neighbourhoods where ambition is quietly discouraged. We cleaned public spaces not because anyone asked us to, but because we wanted to show that young people care.<br><br>The impact is not always measurable. But I have seen students who attended our workshops build their first websites. I have seen young women decide to apply to university because of a conversation in one of our circles. That is enough.'},
+  {cat:'Technology',title:'The Future of Tech Education in Algeria',date:'Feb 2025',body:'Algeria has 44 million people, a young population, excellent universities, and a serious shortage of tech talent. This is both a problem and a massive opportunity.<br><br>The good news: coding bootcamps are emerging. Online learning platforms are more accessible than ever. A new generation of Algerian developers is building products and joining international remote teams.<br><br>The challenge: internet infrastructure is still inconsistent in the south. University curricula often lag behind industry needs by 5 to 10 years. And there is a persistent brain drain. Our best talents leave for France, Canada or the Gulf.<br><br>My belief: the solution is local. We need more Algerians who stay and build.'},
+  {cat:'Education',title:'IELTS vs TOEFL: Which One Should You Take?',date:'Jan 2025',body:'This is the question I get most from my students. The short answer: it depends on where you are applying.<br><br>IELTS is preferred by UK, Australian and Canadian universities, and most European institutions. TOEFL is preferred by US universities.<br><br>For Algerian students: if you are targeting France, the UK, or English-speaking countries in general, IELTS is usually the better choice. It is more widely accepted and the speaking test feels more natural. It is a face-to-face interview, not a microphone recording.<br><br>Whichever you choose, prepare for at least 3 months. Focus on writing and speaking. These are the sections where most students lose points.'}
+];
+
+function openPost(i){
+  var p=posts[i];
+  document.getElementById('mCat').textContent=p.cat;
+  document.getElementById('mTitle').textContent=p.title;
+  document.getElementById('mDate').textContent=p.date;
+  document.getElementById('mContent').innerHTML=p.body;
+  document.getElementById('postModal').classList.add('open');
+}
+function closePM(){document.getElementById('postModal').classList.remove('open');}
+function closePMOut(e){if(e.target.id==='postModal')closePM();}
+
+function filterBlog(btn,cat){
+  document.querySelectorAll('.filt').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  document.querySelectorAll('.blog-card').forEach(function(c){
+    c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none';
+  });
+}
+
+function subscribeNL(){
+  var em=document.getElementById('nlEmail').value.trim();
+  if(!em||em.indexOf('@')<0){showToast('Please enter a valid email');return;}
+  showToast('Subscribed! Welcome, '+em);
+  document.getElementById('nlEmail').value='';
+}
+
+function dlCV(lang){showToast(lang==='en'?'Downloading CV (English)...':'جاري التحميل...');}
+function dlRes(e,name){e.preventDefault();showToast('Downloading "'+name+'"...');}
+</script>
+</body>
+</html>
